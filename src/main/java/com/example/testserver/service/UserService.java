@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -26,12 +27,13 @@ public class UserService {
 
     public User createNewUser() {
         log.info("Create new user");
+        Random random = new Random();
         User user = new User();
         UUID uuid = UUID.randomUUID();
         user.setName("Test");
-        user.setLastName("Test №" + uuid);
-        user.setNickName("NickName " + uuid);
-        user.setStatus(false);
+        user.setLastName("Jonh");
+        user.setNickName("@JohnDoe");
+        user.setStatus(random.nextBoolean());
         user.setLocation("Test");
         user.setPhoneNumber(String.valueOf(uuid));
         userRepository.save(user);
